@@ -45,5 +45,5 @@ jobs:
         run: npm install
 
       # 7. Run npm build
-      - name: NPM build
-        run: npm run build:css
+      #- name: NPM build
+      # run: npm run build:css
