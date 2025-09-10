@@ -1,0 +1,23 @@
+# build artifacts
+/public/articles/
+output.css
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Misc
+.env
+
+.venv
