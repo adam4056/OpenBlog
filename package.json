@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./public/output.css --minify",
-    "build:articles": "python3 build.py",
+    "build:articles": "node build.js",
     "build": "npm run build:css && npm run build:articles",
     "dev:css": "npx @tailwindcss/cli -i ./src/input.css -o ./public/output.css --watch",
-    "dev:articles": "chokidar \"src/**/*.md\" \"src/*.html\" -c \"python3 build.py\"",
+    "dev:articles": "chokidar \"src/**/*.md\" \"src/*.html\" -c \"node build.js\"",
     "dev": "npm-run-all --parallel dev:css dev:articles"
   },
   "keywords": [],
@@ -17,7 +17,8 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "tailwindcss": "^4.1.13"
+    "tailwindcss": "^4.1.13",
+    "markdown-it": "^14.0.0"
   },
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
