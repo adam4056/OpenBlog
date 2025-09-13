@@ -9,7 +9,7 @@
     "build:articles": "node build.js",
     "build": "npm run build:css && npm run build:articles",
     "dev:css": "npx @tailwindcss/cli -i ./src/input.css -o ./public/output.css --watch",
-    "dev:articles": "chokidar \"src/**/*.md\" \"src/*.html\" -c \"node build.js\"",
+    "dev:articles": "chokidar \"articles/**/*.md\" \"src/templates/*.html\" -c \"node build.js\"",
     "dev": "npm-run-all --parallel dev:css dev:articles"
   },
   "keywords": [],

@@ -4,9 +4,10 @@ const MarkdownIt = require('markdown-it');
 
 // Configuration
 const SRC_DIR = 'src';
-const ARTICLES_SRC = path.join(SRC_DIR, 'articles');
-const TEMPLATE_FILE = path.join(SRC_DIR, 'template.html');
-const INDEX_TEMPLATE_FILE = path.join(SRC_DIR, 'index_template.html');
+const ARTICLES_SRC = 'articles'; // articles moved to root
+const TEMPLATES_DIR = path.join(SRC_DIR, 'templates');
+const TEMPLATE_FILE = path.join(TEMPLATES_DIR, 'template.html');
+const INDEX_TEMPLATE_FILE = path.join(TEMPLATES_DIR, 'index_template.html');
 
 const PUBLIC_DIR = 'public';
 const ARTICLES_PUBLIC = path.join(PUBLIC_DIR, 'articles');
@@ -115,18 +116,23 @@ function buildIndex(articles) {
   const template = loadTemplate(INDEX_TEMPLATE_FILE);
 
   const articlesHtml = articles.map(art => 
-    `<a href="${art.url}" class="block p-4 bg-white rounded-xl shadow hover:bg-gray-50">
-      <h3 class="text-xl font-bold">${art.title}</h3>
-      <p class="text-gray-500 text-sm">${art.date} ${art.time} · ${art.author}</p>
-    </a>`
+    `<article class="bg-white p-6 rounded-2xl shadow hover:shadow-md transition">
+        <h3 class="text-xl font-bold text-gray-900 mb-2">
+          <a href="${art.url}" class="hover:underline">${art.title}</a>
+        </h3>
+        <p class="text-gray-500 text-sm mb-3">${art.date} · ${art.author} · ${art.time} read</p>
+        <a href="${art.url}" class="text-blue-600 font-medium hover:underline">Read more →</a>
+    </article>`
   ).join('\n');
-
-  const output = template.replace(/\{\{\s*articles\s*\}\}/g, articlesHtml);
-
+  
+  const output = template
+    .replace(/\{\{\s*articles\s*\}\}/g, articlesHtml)
+    .replace(/\{\{\s*articles_count\s*\}\}/g, articles.length);
+  
+  // Write the generated HTML to public/index.html
   const indexPath = path.join(PUBLIC_DIR, 'index.html');
   fs.writeFileSync(indexPath, output, 'utf8');
-
-  console.log('✅ index.html ready');
+  console.log(`✅ index.html generated with ${articles.length} articles`);
 }
 
 // -------------------------------
