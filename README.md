@@ -343,12 +343,8 @@ npm install
 
 ## License
 
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Support
 
 If you have any questions or need help, please open an issue on GitHub or contact the maintainer.
-
----
-
-**Happy blogging! 🚀**
