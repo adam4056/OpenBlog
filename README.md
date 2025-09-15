@@ -52,9 +52,9 @@ blog/
    # Add an article
    echo "!!!$(date +%Y/%m/%d)!!$(date +%H:%M)!!Your Name!!
 
-# My First Post
+   # My First Post
 
-Hello world! This is my first blog post." > articles/my-first-post.md
+   Hello world! This is my first blog post." > articles/my-first-post.md
    
    # Push to trigger deployment
    git add .
